@@ -1,7 +1,15 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: rgb(238, 234, 211);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Header */
@@ -31,9 +39,10 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* Articles */
+/* Main */
 main {
     padding: 2em;
+    flex: 1; /* Pushes footer to bottom */
 }
 
 /* Grid container */
