@@ -15,8 +15,7 @@ body {
 }
 
 .music-player {
-    background: #ffe0e5;
-    width: 400px;
+    background: #F3D130;
     padding: 25px 35px;
     text-align: center;
 }
@@ -33,7 +32,7 @@ nav .cirkle {
     height: 40px;
     line-height: 40px;
     background: #fff;
-    color: #f53192;
+    color: #D94B57;
     box-shadow: 0 5px 10px rgba(255, 26, 26, 0.2);
 }
 
@@ -61,7 +60,7 @@ nav .cirkle {
     -webkit-appearance: none; 
     width: 100%;
     height: 6px;
-    background: #f53192;
+    background: #D94B57;
     border-radius: 4px;
     cursor: pointer;
     margin: 40px 0;
@@ -70,7 +69,7 @@ nav .cirkle {
 #progress::-webkit-slider-thumb {
     appearance: none;
     -webkit-appearance: none; 
-    background: #f53192;
+    background: #D94B57;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -93,15 +92,16 @@ nav .cirkle {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    color: #f53192;
+    color: #D94B57;
     box-shadow: 0 10px 10px rgba(255, 26, 26, 0.22);
     cursor: pointer;
 }
 
-.controls div:nth-child(2){
-    tronsform: scale(1.5)=;
-    background: #f53192;
+.controls div:nth-child(2) {
+    transform: scale(1.5);
+    background: #D94B57;
     color: #fff;
+}
 
 /* musikkavspiller */
 
@@ -148,4 +148,5 @@ article blockquote,
 article strong,
 article em {
     color: rgb(255, 235, 217);
+
 }
