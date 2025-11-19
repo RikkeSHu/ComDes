@@ -8,76 +8,7 @@
         <script src="https://kit.fontawesome.com/791435d557.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <!-- her kommer koden til tutorialen jeg følger. skal flytte den etterhvert men den erpå toppen nå for jeg synes det
-          er lettere å jobbe med. og det er derfor det ser så rart ut på musikk siden akkurat nå, men jeg trenger en 
-          liten pause lol
-          https://www.youtube.com/watch?v=JtrFzoL1joI -->
-        <div class="container">
-            <div class="music-player">
-                 <nav>
-                    <div class="cirkle">
-                        <i class="fa-solid fa-angle-left"></i>
-                    </div>
-                    <div class="cirkle">
-                        <i class="fa-solid fa-bars"></i>
-                    </div>
-                </nav>
-                <img src="../ComDes/turbulentetanker.png" class="song-img">
-                <h1>Nøtteskall</h1>
-                <p>Radin</p>
-
-                <audio id="song">
-                    <source src="music/notteskall(1).mp3" type="audio/mpeg">
-                </audio>
-                <input type="range" value="0" id="progress">
-
-                <div class="controls">
-                    <div><i class="fa-solid fa-backward"></i></div>
-                    <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
-                    <div><i class="fa-solid fa-forward"></i></div>
-                </div>
-            </div>
-        </div>
-
-        <script>
-
-            let progress = document.getElementById('progress');
-            let song = document.getElementById('song');
-            let ctrlIcon = document.getElementById('ctrlIcon');
-
-            song.onloadedmetadata =function() {
-                progress.max = song.duration;
-                progress.value = song.currentTime;
-            }
-
-            function playPause() {
-                if(ctrlIcon.classList.contains('fa-pause')){
-                    song.pause();
-                    ctrlIcon.classList.remove('fa-pause');
-                    ctrlIcon.classList.add('fa-play');
-                }
-                else{
-                    song.play();
-                    ctrlIcon.classList.add('fa-pause');
-                    ctrlIcon.classList.remove('fa-play');
-                }
-            }
-
-            if(song.play()){
-                setInterval(()=>{
-                    progress.value = song.currentTime;  
-                }, 500);
-            }
-
-            progress.onchange = function() {
-                song.play();
-                song.currentTime = progress.value;
-                ctrlIcon.classList.add('fa-pause');
-                ctrlIcon.classList.remove('fa-play');
-            }
-
-        </script>
-<!-- musikkspiller -->
+ 
 
 
         <header>
@@ -191,6 +122,8 @@
             <h2>Turbulent Thoughts in Music</h2>
             <p><strong>By Malene, Student at Høgskolen i Østfold (HiØ)</strong></p>
 
+            <img src="../ComDes/music_images/Radin_portrett.jpeg" class="portrett-img">
+
             <p><strong>Radin was sitting leaning back in his chair having a relaxing posture.</strong></p>
 
             <p>In the corner of his small student apartment, his desk surrounded by purple LED lights and stacks of cables, he leans back in a worn black gaming chair. His music setup — an audio interface, a simple mic, and a pair of well-used but carefully maintained headphones — sits neatly arranged on a compact desk. The atmosphere is quiet, the kind of calm that makes it easy to forget how much creativity flows in this space. He speaks slowly, relaxed, almost thoughtful, as if every answer is something he’s still discovering.</p>
@@ -232,7 +165,76 @@
             </blockquote>
 
             <h3>Can you walk me through the process of making music?</h3>
+       <!-- her kommer koden til tutorialen jeg følger. skal flytte den etterhvert men den erpå toppen nå for jeg synes det
+          er lettere å jobbe med. og det er derfor det ser så rart ut på musikk siden akkurat nå, men jeg trenger en 
+          liten pause lol
+          https://www.youtube.com/watch?v=JtrFzoL1joI -->
+        <div class="container">
+            <div class="music-player">
+                 <nav>
+                    <div class="cirkle">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </div>
+                    <div class="cirkle">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                </nav>
+                <img src="../ComDes/music_images/turbulentetanker.png" class="song-img">
+                <h1>Nøtteskall</h1>
+                <p>Radin</p>
 
+                <audio id="song">
+                    <source src="music/notteskall(1).mp3" type="audio/mpeg">
+                </audio>
+                <input type="range" value="0" id="progress">
+
+                <div class="controls">
+                    <div><i class="fa-solid fa-backward"></i></div>
+                    <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
+                    <div><i class="fa-solid fa-forward"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+            let progress = document.getElementById('progress');
+            let song = document.getElementById('song');
+            let ctrlIcon = document.getElementById('ctrlIcon');
+
+            song.onloadedmetadata =function() {
+                progress.max = song.duration;
+                progress.value = song.currentTime;
+            }
+
+            function playPause() {
+                if(ctrlIcon.classList.contains('fa-pause')){
+                    song.pause();
+                    ctrlIcon.classList.remove('fa-pause');
+                    ctrlIcon.classList.add('fa-play');
+                }
+                else{
+                    song.play();
+                    ctrlIcon.classList.add('fa-pause');
+                    ctrlIcon.classList.remove('fa-play');
+                }
+            }
+
+            if(song.play()){
+                setInterval(()=>{
+                    progress.value = song.currentTime;  
+                }, 500);
+            }
+
+            progress.onchange = function() {
+                song.play();
+                song.currentTime = progress.value;
+                ctrlIcon.classList.add('fa-pause');
+                ctrlIcon.classList.remove('fa-play');
+            }
+
+        </script>
+<!-- musikkspiller -->
             <blockquote>
                 “I never have a certain plan for what I am going to make. I go about it a lot of different ways. I could record some vocals on a beat I made a while ago, come back and change or continue the lyrics. I could also listen to the whole beat, then write. I could also switch the lyrics to another beat to see if it fits more there.”
             </blockquote>
