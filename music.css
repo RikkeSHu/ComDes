@@ -5,7 +5,6 @@ body {
 }
 
 
-
 /* Header */
 header {
     background-color: #cbd3e3;
@@ -51,7 +50,7 @@ article em {
 }
 
 /* musikkavspiller */
-.container {
+.music-container {
     display: flex;
 }
 
@@ -61,13 +60,13 @@ article em {
     text-align: center;
 }
 
-nav {
+.music-player nav {
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
 }
 
-nav .cirkle {
+.music-player nav .cirkle {
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -84,7 +83,7 @@ nav .cirkle {
     box-shadow: 0 10px 60px rgba(255, 26, 26, 0.22);
 }
 
-.music-player h1 {
+.music-player  h1 {
     font-size: 20px;
     font-weight: 400;
     color: #333;
