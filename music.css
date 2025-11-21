@@ -147,8 +147,107 @@ article em {
 
 /* Radin portrett bilde */
 .portrett-img {
-  width: 300px;
-  border-radius: 10px;
+  width: 100%;
+  max-width: 340px;
+  border-radius: 18px;
   display: block;
-  margin: 20px auto;
+  margin: 0 auto 10px auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
 }
+
+/* --- SCROLLYTELLING / RADIN-STORY --- */
+
+.radin-story {
+    padding: 4rem 10vw;
+    background: radial-gradient(circle at top, #9c2222, #5a0e0e);
+}
+
+.story-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.portrett-wrapper {
+    position: sticky;   /* gjør at portrettet "låses" når du scroller */
+    top: 100px;         /* hvor høyt på siden det skal stå fast */
+}
+
+.caption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgb(255, 235, 217);
+    opacity: 0.9;
+    margin-top: 6px;
+}
+
+/* Høyresiden – tekstblokkene */
+.story-text {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.story-block h3 {
+    margin-top: 0;
+}
+
+.story-block p,
+.story-block blockquote {
+    max-width: 45rem;
+}
+
+/* Galleri med flere bilder */
+.story-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.gallery-img {
+    width: calc(50% - 8px);
+    border-radius: 14px;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Sentrer musikkspilleren inni storyen */
+.story-block .music-container {
+    justify-content: center;
+    margin: 20px 0 10px 0;
+}
+
+/* --- FADE-IN EFFEKT FOR SCROLLYTELLING --- */
+
+.fade {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Litt responsivitet */
+@media (max-width: 900px) {
+    .story-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .portrett-wrapper {
+        position: static; /* på mobil: bare scroller normalt */
+    }
+
+    .gallery-img {
+        width: 100%;
+    }
+}
+
