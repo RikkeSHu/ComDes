@@ -232,11 +232,10 @@
                     }
                 }
 
-                if(song.play()){
-                    setInterval(()=>{
-                        progress.value = song.currentTime;  
-                    }, 500);
-                }
+song.addEventListener("timeupdate", () => {
+    progress.value = song.currentTime;
+});
+
 
                 progress.onchange = function() {
                     song.play();
