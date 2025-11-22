@@ -144,6 +144,60 @@ article p {
     stroke: #8e24aa;  /* 8.3%: combination */
 }
 
+/* Legend under/ved siden av kakediagrammene */
+.chart-legend {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+}
+
+.chart-legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+}
+
+/* Dot med farger” */
+.legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* 1) Price chart */
+.chart-legend-price .legend-price-1 {
+    background-color: #4c12a8;  /* samme som slice-1 */
+}
+.chart-legend-price .legend-price-2 {
+    background-color: #675e35;  /* samme som slice-2 */
+}
+
+/* 2) Share meals chart */
+.chart-legend-share .legend-share-1 {
+    background-color: #316133;  /* slice-1 */
+}
+.chart-legend-share .legend-share-2 {
+    background-color: #c03c90;  /* slice-2 */
+}
+.chart-legend-share .legend-share-3 {
+    background-color: #0c1829;  /* slice-3 */
+}
+
+/* 3) Habits chart */
+.chart-legend-habits .legend-habits-1 {
+    background-color: #2b8cff;  /* slice-1 */
+}
+.chart-legend-habits .legend-habits-2 {
+    background-color: #ffa726;  /* slice-2 */
+}
+.chart-legend-habits .legend-habits-3 {
+    background-color: #8e24aa;  /* slice-3 */
+}
+
+
 /* Responsiv */
 @media (max-width: 600px) {
     .chart-section {
