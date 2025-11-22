@@ -34,16 +34,16 @@
                 }
 
 
-// --- SCROLLYTELLING: FADE-IN PÅ ELEMENTER MED .fade ---
+// --- SCROLLYTELLING: FADE-IN OG FADE-OUT PÅ ELEMENTER MED .fade ---
 
 const fadeElements = document.querySelectorAll('.fade');
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-            // Hvis man ikke vil at de skal "fade ut" igjen når man scroller opp: kanskje jeg endrer på denne
-            observer.unobserve(entry.target);
+            entry.target.classList.add('show');   // fader inn
+        } else {
+            entry.target.classList.remove('show'); // fader ut
         }
     });
 }, {
@@ -51,3 +51,4 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 fadeElements.forEach((el) => observer.observe(el));
+
