@@ -112,7 +112,7 @@ article p {
     font-weight: bold;
 }
 
-/* Farger på grafen*/
+/* Farger på grafen: do you look at price*/
 .slice-1 {
     stroke: #12a817;  /* 83.3% */
 }
@@ -121,6 +121,19 @@ article p {
     stroke: #dbb715;  /* 16.7% */
 }
 
+
+/* Farger for: do you share meal*/
+.slice-1 {
+    stroke: #4CAF50;  /* 50% */
+}
+
+.slice-2 {
+    stroke: #FF9800;  /* 25% */
+}
+
+.slice-3 {
+    stroke: #f32121;  /* 25% */
+}
 
 @media (max-width: 600px) {
     .chart-section {
