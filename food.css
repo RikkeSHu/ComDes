@@ -50,7 +50,7 @@ article p {
     font-size: 1rem;
 }
 
-/* Galleri-blokk (om du bruker den senere) */
+
 .story-block.story-gallery {
     display: flex;
     gap: 1rem;
@@ -65,7 +65,7 @@ article p {
     object-fit: cover;
 }
 
-/* ---------- CSS for kakediagrammet ---------- */
+/* ---------- CSS for kakediagrammene ---------- */
 
 .chart-section {
     margin: 4rem 0;
@@ -101,7 +101,7 @@ article p {
     height: 100%;
 }
 
-/* Prosent-tekst i midten (om du vil vise 100% der) */
+
 .multi-pie-percentage {
     position: absolute;
     inset: 0;
@@ -112,29 +112,39 @@ article p {
     font-weight: bold;
 }
 
-/* Farger på grafen: do you look at price*/
-.slice-1 {
-    stroke: #12a817;  /* 83.3% */
+/* Farger på grafene ----------- */
+
+/* 1) Do you look at the price when you buy food? */
+.price-chart .slice-1 {
+    stroke: #4c12a8;  /* 83.3% */
+}
+.price-chart .slice-2 {
+    stroke: #675e35;  /* 16.7% */
 }
 
-.slice-2 {
-    stroke: #dbb715;  /* 16.7% */
+/* 2) Do you share meals with your friends/roommates to save money? */
+.share-chart .slice-1 {
+    stroke: #316133;  /* 50% */
+}
+.share-chart .slice-2 {
+    stroke: #c03c90;  /* 25% */
+}
+.share-chart .slice-3 {
+    stroke: #0c1829;  /* 25% */
 }
 
-
-/* Farger for: do you share meal*/
-.slice-1 {
-    stroke: #4CAF50;  /* 50% */
+/* 3) How do you usually get your meals? */
+.habits-chart .slice-1 {
+    stroke: #2b8cff;  /* 83.3%: cook for yourself */
+}
+.habits-chart .slice-2 {
+    stroke: #ffa726;  /* 8.3%: cafeteria */
+}
+.habits-chart .slice-3 {
+    stroke: #8e24aa;  /* 8.3%: combination */
 }
 
-.slice-2 {
-    stroke: #FF9800;  /* 25% */
-}
-
-.slice-3 {
-    stroke: #f32121;  /* 25% */
-}
-
+/* Responsiv */
 @media (max-width: 600px) {
     .chart-section {
         flex-direction: column;
