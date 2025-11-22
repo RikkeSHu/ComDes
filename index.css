@@ -10,7 +10,7 @@ body {
 /* Header */
 header {
     background-color: #cbd3e3;
-    color: rgb(255, 252, 233);
+    color: rgb(55, 55, 52);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,6 +19,7 @@ header {
 
 header h1 a{
     text-decoration: none;
+    color: rgb(55, 55, 52);
 }
 
 nav ul {
@@ -30,7 +31,7 @@ nav ul {
 }
 
 nav a {
-    color: rgb(255, 252, 233);
+    color: rgb(55, 55, 52);
     text-decoration: none;
 }
 
