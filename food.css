@@ -50,7 +50,6 @@ article p {
     font-size: 1rem;
 }
 
-
 .story-block.story-gallery {
     display: flex;
     gap: 1rem;
@@ -135,16 +134,17 @@ article p {
 
 /* 3) How do you usually get your meals? */
 .habits-chart .slice-1 {
-    stroke: #2b8cff;  /* 83.3%: cook for yourself */
+    stroke: #2b8cff;  /* 83.3% */
 }
 .habits-chart .slice-2 {
-    stroke: #ffa726;  /* 8.3%: cafeteria */
+    stroke: #ffa726;  /* 8.3% */
 }
 .habits-chart .slice-3 {
-    stroke: #8e24aa;  /* 8.3%: combination */
+    stroke: #8e24aa;  /* 8.3% */
 }
 
-/* Legend under/ved siden av kakediagrammene */
+/* --- LEGEND (fargede "baller" + tekst) --- */
+
 .chart-legend {
     list-style: none;
     padding: 0;
@@ -159,7 +159,6 @@ article p {
     font-size: 0.95rem;
 }
 
-/* Dot med farger” */
 .legend-dot {
     width: 14px;
     height: 14px;
@@ -168,35 +167,72 @@ article p {
 }
 
 /* 1) Price chart */
+
+/* Price chart legend */
 .chart-legend-price .legend-price-1 {
-    background-color: #4c12a8;  /* samme som slice-1 */
+    background-color: #4c12a8;
 }
 .chart-legend-price .legend-price-2 {
-    background-color: #675e35;  /* samme som slice-2 */
+    background-color: #675e35;
 }
 
-/* 2) Share meals chart */
+/* Share chart legend */
 .chart-legend-share .legend-share-1 {
-    background-color: #316133;  /* slice-1 */
+    background-color: #316133;
 }
 .chart-legend-share .legend-share-2 {
-    background-color: #c03c90;  /* slice-2 */
+    background-color: #c03c90;
 }
 .chart-legend-share .legend-share-3 {
-    background-color: #0c1829;  /* slice-3 */
+    background-color: #0c1829;
 }
 
-/* 3) Habits chart */
+/* Habits chart legend */
 .chart-legend-habits .legend-habits-1 {
-    background-color: #2b8cff;  /* slice-1 */
+    background-color: #2b8cff;
 }
 .chart-legend-habits .legend-habits-2 {
-    background-color: #ffa726;  /* slice-2 */
+    background-color: #ffa726;
 }
 .chart-legend-habits .legend-habits-3 {
-    background-color: #8e24aa;  /* slice-3 */
+    background-color: #8e24aa;
 }
 
+/* ---------- Skjærefjøl-bakgrunn ---------- */
+
+.board-block {
+    background-image: url("../ComDes/foodpics/cuttingboard.png"); /* <-- din fil */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding: 2.5rem 2rem;
+    margin: 3rem 0;
+    border-radius: 18px;
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22);
+
+    position: relative;
+    overflow: hidden;
+
+    /* scroll-animasjon */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 800ms ease-out, transform 800ms ease-out;
+}
+
+.board-block.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Gjør tekst lesbar oppå bildet */
+.board-block p {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
 
 /* Responsiv */
 @media (max-width: 600px) {

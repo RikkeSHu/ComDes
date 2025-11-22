@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         },
-        { threshold: 0.4 } 
+        { threshold: 0.4 }
     );
 
     multiCharts.forEach(chart => observer.observe(chart));
@@ -59,6 +59,7 @@ function animateMultiSlicePie(container) {
 
         circle.style.fill = "none";
         circle.style.strokeWidth = 20;
+
         circle.style.strokeDasharray = circumference;
         circle.style.strokeDashoffset = circumference;
 
@@ -90,7 +91,7 @@ function animateMultiSlicePie(container) {
         accumulatedPercent += percent;
     });
 
-    // Midt-tekst (valgfritt – viser 100%)
+    // Midt-tekst
     const totalLabel = document.createElement("div");
     totalLabel.classList.add("multi-pie-percentage");
     totalLabel.textContent = "100%";
@@ -99,3 +100,29 @@ function animateMultiSlicePie(container) {
     container.appendChild(svg);
     container.appendChild(totalLabel);
 }
+
+// ---------- Skjærefjøl scroll-animasjon ----------
+
+document.addEventListener("DOMContentLoaded", () => {
+    const boards = document.querySelectorAll(".board-block");
+    if (!boards.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+        boards.forEach(b => b.classList.add("visible"));
+        return;
+    }
+
+    const observer = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.25 }
+    );
+
+    boards.forEach(block => observer.observe(block));
+});
