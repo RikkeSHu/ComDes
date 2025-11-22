@@ -175,7 +175,7 @@ article em {
 
 .portrett-wrapper {
     position: sticky;   /* gjør at portrettet "låses" når du scroller */
-    top: 100px;         /* hvor høyt på siden det skal stå fast */
+    top: 50px;         /* hvor høyt på siden det skal stå fast */
 }
 
 .caption {
@@ -235,6 +235,24 @@ article em {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Video under prosess */
+.process-video {
+    margin: 20px 0 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Gjør videoen større enn galleribildene */
+.process-video .gallery-img {
+    width: 100%;
+    max-width: 640px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+
 
 /* Litt responsivitet */
 @media (max-width: 900px) {
