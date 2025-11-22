@@ -252,6 +252,10 @@ article em {
     object-fit: cover;
 }
 
+/* Andre del av Radin-story uten sticky layout på venstre side */
+.story-inner-single {
+    grid-template-columns: minmax(0, 1fr);
+}
 
 
 /* Litt responsivitet */
