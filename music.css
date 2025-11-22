@@ -49,6 +49,63 @@ article em {
 
 }
 
+
+/* --- INTRO SCROLLYTELLING --- */
+
+.music-intro {
+    padding: 4rem 10vw 3rem;
+}
+
+.intro-inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.intro-kicker {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 235, 217, 0.7);
+    margin-bottom: 0.5rem;
+}
+
+.music-intro h2 {
+    font-size: 2.1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Hvert avsnitt som en "scene" med linje og label til venstre */
+.intro-paragraph {
+    position: relative;
+    margin: 7rem 0;
+    padding-left: 2.5rem;
+    border-left: 1px solid rgba(255, 235, 217, 0.25);
+    line-height: 1.7;
+}
+
+.intro-paragraph::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    top: -0.9rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+/* Litt ekstra spacing på mobil */
+@media (max-width: 700px) {
+    .music-intro {
+        padding: 3rem 1.5rem 2rem;
+    }
+
+    .intro-paragraph {
+        padding-left: 1.8rem;
+    }
+}
+/* --- Slutt intro --- */
+
 /* musikkavspiller */
 .music-container {
     display: flex;
@@ -254,7 +311,7 @@ article em {
 
 /* Andre del av Radin-story uten sticky layout på venstre side */
 .story-inner-single {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr); /* må muligens se på denne injen*/
 }
 
 
