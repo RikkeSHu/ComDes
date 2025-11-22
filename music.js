@@ -52,3 +52,5 @@ const observer = new IntersectionObserver((entries) => {
 
 fadeElements.forEach((el) => observer.observe(el));
 
+
+
