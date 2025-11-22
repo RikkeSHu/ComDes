@@ -37,3 +37,98 @@ footer {
     text-align: center;
     padding: 1.5em 0;
 }
+
+/* Main layout */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2em 1em 4em;
+}
+
+article p {
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Galleri-blokk (om du bruker den senere) */
+.story-block.story-gallery {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.gallery-img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* ---------- CSS for kakediagrammet ---------- */
+
+.chart-section {
+    margin: 4rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+.pie-chart-wrapper {
+    flex: 0 0 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Teksten ved siden av grafen */
+.chart-text {
+    flex: 1 1 250px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Multi-slice pie chart */
+.multi-pie-chart {
+    position: relative;
+    width: 220px;
+    height: 220px;
+}
+
+.multi-pie-chart svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Prosent-tekst i midten (om du vil vise 100% der) */
+.multi-pie-percentage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+/* Farger på grafen*/
+.slice-1 {
+    stroke: #12a817;  /* 83.3% */
+}
+
+.slice-2 {
+    stroke: #dbb715;  /* 16.7% */
+}
+
+
+@media (max-width: 600px) {
+    .chart-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pie-chart-wrapper {
+        align-self: center;
+    }
+}
