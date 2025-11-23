@@ -1,5 +1,5 @@
 
-// ---------------- MULTI-SLICE PIE CHART ----------------
+//  MULTI-SLICE PIE CHART ----------------
 
 document.addEventListener("DOMContentLoaded", () => {
     const multiCharts = document.querySelectorAll(".multi-pie-chart");
@@ -101,7 +101,7 @@ function animateMultiSlicePie(container) {
     container.appendChild(totalLabel);
 }
 
-// ---------- Skjærefjøl scroll-animasjon ----------
+// Skjærefjøl scroll-animasjon ----------
 
 document.addEventListener("DOMContentLoaded", () => {
     const boards = document.querySelectorAll(".board-block");
@@ -125,4 +125,31 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     boards.forEach(block => observer.observe(block));
+});
+
+// scroll-fade for .scroll-fade-elementer ----------
+
+document.addEventListener("DOMContentLoaded", () => {
+    const fadeEls = document.querySelectorAll(".scroll-fade");
+    if (!fadeEls.length) return;
+
+    // Fallback hvis IntersectionObserver ikke finnes
+    if (!("IntersectionObserver" in window)) {
+        fadeEls.forEach(el => el.classList.add("visible"));
+        return;
+    }
+
+    const fadeObserver = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.2 }
+    );
+
+    fadeEls.forEach(el => fadeObserver.observe(el));
 });

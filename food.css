@@ -246,6 +246,19 @@ article p {
     transform: translateX(0);
 }
 
+/* FADING FOR TEKST OG SEKSJONER --- */
+
+.scroll-fade {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 700ms ease-out, transform 700ms ease-out;
+}
+
+.scroll-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 /* Responsiv */
 @media (max-width: 600px) {
