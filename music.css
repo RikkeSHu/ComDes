@@ -492,6 +492,23 @@ html {
     max-width: 45rem;
 }
 
+/* Telefon-bildet i Xhevrije-historien */
+.phone_img {
+    display: block;
+    margin: 0 auto 1.5rem auto;
+    max-width: 220px;
+    width: 70%;
+    aspect-ratio: 9 / 19;
+    border-radius: 44px;
+    object-fit: cover;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+.story-gallery .phone_img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 /* Galleri med flere bilder */
 .story-gallery {
     display: flex;
