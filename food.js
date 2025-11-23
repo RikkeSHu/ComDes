@@ -1,7 +1,6 @@
-
-
 document.addEventListener("DOMContentLoaded", () => {
     initMultiSliceCharts();
+    initBarCharts();
     initBoardBlocks();
     initScrollFade();
 });
@@ -130,6 +129,111 @@ function setPieProgress(container, progress) {
         circle.style.strokeDashoffset = String(offset);
     });
 }
+
+/* ------------------ 1b) HORISONTALT BAR CHART ------------------ */
+
+function initBarCharts() {
+    const barCharts = document.querySelectorAll(".bar-chart");
+    if (!barCharts.length) return;
+
+    barCharts.forEach(buildBarChart);
+
+    function updateBarsOnScroll() {
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+        const mid = viewportHeight / 2;
+
+        barCharts.forEach(chart => {
+            const rect = chart.getBoundingClientRect();
+            const center = rect.top + rect.height / 2;
+
+            let progress = 0;
+
+            if (center >= mid && center <= viewportHeight) {
+                const range = viewportHeight - mid;
+                const distFromMid = center - mid;
+                progress = 1 - distFromMid / range;
+            } else if (center >= 0 && center < mid) {
+                const range = mid;
+                const distFromTop = center;
+                progress = distFromTop / range;
+            } else {
+                progress = 0;
+            }
+
+            progress = Math.max(0, Math.min(1, progress));
+            setBarProgress(chart, progress);
+        });
+    }
+
+    window.addEventListener("scroll", updateBarsOnScroll);
+    window.addEventListener("resize", updateBarsOnScroll);
+    updateBarsOnScroll();
+}
+
+function buildBarChart(container) {
+    const valuesAttr = container.dataset.values || "";
+    const labelsAttr = container.dataset.labels || "";
+
+    const values = valuesAttr
+        .split(",")
+        .map(v => parseFloat(v.trim()))
+        .filter(v => !isNaN(v));
+
+    const labels = labelsAttr
+        .split(",")
+        .map(l => l.trim());
+
+    if (!values.length) return;
+
+    const maxValue = Math.max(...values, 1);
+    const bars = [];
+
+    container.innerHTML = "";
+
+    values.forEach((value, index) => {
+        const row = document.createElement("div");
+        row.className = "bar-row";
+
+        const labelSpan = document.createElement("span");
+        labelSpan.className = "bar-label";
+        labelSpan.textContent = labels[index] || "";
+
+        const track = document.createElement("div");
+        track.className = "bar-track";
+
+        const fill = document.createElement("div");
+        fill.className = `bar-fill bar-fill-${index + 1}`;
+        fill.dataset.value = String(value);
+        fill.dataset.maxValue = String(maxValue);
+        fill.style.width = "0%";
+
+        const percentSpan = document.createElement("span");
+        percentSpan.className = "bar-percent";
+        percentSpan.textContent = `${value.toFixed(1)}%`;
+
+        track.appendChild(fill);
+        row.appendChild(labelSpan);
+        row.appendChild(track);
+        row.appendChild(percentSpan);
+
+        container.appendChild(row);
+        bars.push(fill);
+    });
+
+    container._bars = bars;
+}
+
+function setBarProgress(container, progress) {
+    const bars = container._bars || container.querySelectorAll(".bar-fill");
+
+    bars.forEach(fill => {
+        const value = parseFloat(fill.dataset.value || "0");
+        const max = parseFloat(fill.dataset.maxValue || "1");
+        const targetWidth = (value / max) * 100 * progress;
+        fill.style.width = `${targetWidth}%`;
+    });
+}
+
 
 /* ------------------ 2) Skjærefjøl scroll-animasjon ------------------ */
 

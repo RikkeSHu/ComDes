@@ -214,6 +214,78 @@ article p {
     }
 }
 
+/* ---------- Horisontalt stolpediagram (bar chart) ---------- */
+
+.bar-chart-wrapper {
+    flex: 1 1 350px;
+    display: flex;
+    align-items: center;
+}
+
+.bar-chart {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.bar-label {
+    flex: 0 0 170px;
+    line-height: 1.3;
+}
+
+.bar-track {
+    flex: 1 1 auto;
+    height: 14px;
+    border-radius: 999px;
+    background: #e5e5e5;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    width: 0%;
+    transition: width 500ms ease-out;
+}
+
+/* Farger på stolpene */
+.bar-fill-1 { background-color: #2b8cff; }
+.bar-fill-2 { background-color: #ffa726; }
+.bar-fill-3 { background-color: #8e24aa; }
+.bar-fill-4 { background-color: #316133; }
+.bar-fill-5 { background-color: #c03c90; }
+
+.bar-percent {
+    flex: 0 0 52px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Litt justering for mindre skjermer */
+@media (max-width: 700px) {
+    .bar-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .bar-label {
+        flex: none;
+    }
+
+    .bar-percent {
+        align-self: flex-end;
+    }
+}
+
+
 /* ---------- Skjærefjøl-bakgrunn ---------- */
 
 .board-block {
