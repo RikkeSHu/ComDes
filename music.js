@@ -90,5 +90,20 @@ const observer = new IntersectionObserver((entries) => {
 
 fadeElements.forEach((el) => observer.observe(el));
 
+// --- TELEFON-SKJERM ANIMASJON PÅ SCROLL ---
 
+const phoneWrappers = document.querySelectorAll('.phone-wrapper');
+
+const phoneObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('screen-animate');
+            obs.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.5
+});
+
+phoneWrappers.forEach((el) => phoneObserver.observe(el));
 
