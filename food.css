@@ -390,18 +390,25 @@ article img {
     position: relative;
     overflow: hidden;
 
-    /* scroll-animasjon */
     opacity: 0;
-    transform: translateY(40px);
     transition: opacity 800ms ease-out, transform 800ms ease-out;
 }
 
-.board-block.visible {
-    opacity: 1;
-    transform: translateY(0);
+.board-block.from-left {
+    transform: translateX(-100px);
 }
 
-/* Gjør tekst lesbar oppå bildet */
+.board-block.from-right {
+    transform: translateX(100px);
+}
+
+
+.board-block.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
 .board-block p {
     background: rgba(255, 255, 255, 0.8);
     padding: 0.8rem 1rem;
@@ -409,17 +416,6 @@ article img {
     margin-bottom: 1rem;
 }
 
-/* --- SLIDE-IN EFFECT FOR BOARD BLOCK --- */
-.slide-in {
-    opacity: 0;
-    transform: translateX(-80px);
-    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
-}
-
-.slide-in.show {
-    opacity: 1;
-    transform: translateX(0);
-}
 
 /* FADING FOR TEKST OG SEKSJONER --- */
 

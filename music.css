@@ -104,6 +104,22 @@ nav a {
 }
 
 
+/* --- skrift typer--- */
+.music-intro h2 {
+    font-family: "Georgia", "Times New Roman", serif;
+}
+
+.xhevrije-story h3 {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-weight: 700; 
+}
+
+#radin-story h3 {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-weight: 700; 
+}
+
+
 /* Gjør hele kortet klikkbart */
 section a {
     display: block;
