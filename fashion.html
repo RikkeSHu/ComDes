@@ -142,11 +142,44 @@
         </section>
     </main>
 
-    <footer id="contact">
-        <h2>Contact Us</h2>
-        <p>Email: info@mywebsite.com</p>
-        <p>Phone: +123 456 7890</p>
-        <p>&copy; 2025 The Culture Corner. All rights reserved.</p>
+    <footer id="contact" class="site-footer">
+        <div class="footer-container">
+            <!-- Contact Info -->
+            <div class="footer-section contact-info">
+                <h4>Contact Us</h4>
+                <p>Email: <a href="mailto:info@mywebsite.com">info@mywebsite.com</a></p>
+                <p>Phone: <a href="tel:+1234567890">+123 456 7890</a></p>
+                <p>Address: 123 Culture Street, Oslo, Norway</p>
+                <p>Hours: Monday - Friday: 9:00 AM - 5:00 PM</p>
+            </div>
+
+            <!-- Social Media -->
+            <div class="footer-section social-media">
+                <h4>Follow Us</h4>
+                <a href="https://www.instagram.com/yourprofile" target="_blank">Instagram</a> |
+                <a href="https://www.facebook.com/yourpage" target="_blank">Facebook</a> |
+                <a href="https://twitter.com/yourhandle" target="_blank">Twitter</a>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="footer-section newsletter">
+                <h4>Subscribe to Our Newsletter</h4>
+                <form action="#" method="post">
+                    <input type="email" id="email" name="email" placeholder="Your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Legal -->
+            <div class="footer-section legal">
+                <a href="/privacy-policy.html">Privacy Policy</a> | 
+                <a href="/terms.html">Terms & Conditions</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 The Culture Corner. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="fashion.js"></script>

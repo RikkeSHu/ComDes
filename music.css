@@ -32,11 +32,80 @@ nav a {
     text-decoration: none;
 }
 
-footer {
+.site-footer {
     background-color: #6e6e6e;
-    color: white;
+    color: #fff;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-section {
+    flex: 1 1 200px;
+    min-width: 200px;
+}
+
+.footer-section h4 {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.footer-section a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.footer-section input[type="email"] {
+    padding: 8px;
+    margin-right: 5px;
+    border-radius: 4px;
+    border: none;
+}
+
+.footer-section button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #6f88b9;
+    color: #222;
+    cursor: pointer;
+}
+
+.footer-section button:hover {
+    background-color: #657aa6;
+}
+
+.footer-bottom {
     text-align: center;
-    padding: 1.5em 0;
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+
+/* Gjør hele kortet klikkbart */
+section a {
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+section a:hover article {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
 }
 
 /* Article text color */
