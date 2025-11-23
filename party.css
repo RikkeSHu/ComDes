@@ -66,7 +66,7 @@ footer {
 /* center text */
 
 .articles {
-    background-color: white;   /* white background */
+    background-color: rgba(255, 255, 255, 0.928);   /* white background */
     color: black;              /* text color inside box */
     padding: 2em;              /* space inside the box */
     border-radius: 12px;       /* rounded corners */
