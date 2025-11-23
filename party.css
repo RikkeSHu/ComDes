@@ -230,10 +230,15 @@ section a:hover article {
 }
 
 /* ----------------- Chart Colors ----------------- */
-.habits-chart .slice-1 { stroke: #2b8cff; }
-.habits-chart .slice-2 { stroke: #ffa726; }
-.habits-chart .slice-3 { stroke: #8e24aa; }
-.habits-chart .slice-4 { stroke: red; }
+.habits-chart .slice-1 { stroke: red; }
+.habits-chart .slice-2 { stroke: #28347d; }
+.habits-chart .slice-3 { stroke: #868282; }
+.habits-chart .slice-4 { stroke: rgb(61, 133, 58); }
+
+/* Spanish 100% chart */
+.spanish-chart .slice-1 {
+    stroke: #FFB800; 
+}
 
 /* Legend */
 .chart-legend {
@@ -258,10 +263,14 @@ section a:hover article {
 }
 
 /* Habit legend colors */
-.chart-legend-habits .legend-habits-1 { background-color: #2b8cff; }
-.chart-legend-habits .legend-habits-2 { background-color: #ffa726; }
-.chart-legend-habits .legend-habits-3 { background-color: #8e24aa; }
-.chart-legend-habits .legend-habits-4 { background-color: red; }
+.chart-legend-habits .legend-habits-1 { background-color: red; }
+.chart-legend-habits .legend-habits-2 { background-color: #28347d; }
+.chart-legend-habits .legend-habits-3 { background-color: #868282; }
+.chart-legend-habits .legend-habits-4 { background-color: rgb(61, 133, 58); }
+
+.chart-legend-spanish .legend-habits-1 {
+    background-color: #FFB800; /* same color as slice */
+}
 
 /* ----------------- Price Tags ----------------- */
 .price-tag {
