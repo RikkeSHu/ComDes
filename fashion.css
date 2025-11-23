@@ -91,6 +91,13 @@ th, td {
     text-align: left;
 }
 
+.articles {
+    background-color: white; /* white box */
+    padding: 2em;            /* spacing inside the box */
+    border-radius: 10px;     /* rounded corners */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* optional subtle shadow */
+}
+
 /* Footer */
 footer {
     background-color: #6e6e6e;
