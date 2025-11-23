@@ -26,3 +26,26 @@ function revealElements() {
 
 window.addEventListener('scroll', revealElements);
 window.addEventListener('load', revealElements);
+
+
+// https://www.youtube.com/watch?v=650Fm_ra3Qw
+
+const openBtn = document.getElementById('openModal');
+const closeBtn = document.getElementById('closeModal');
+const modal = document.getElementById('modal');
+
+if (openBtn && closeBtn && modal) {
+    openBtn.addEventListener('click', () => {
+        modal.classList.add('open');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('open');
+    });
+
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.classList.remove('open');
+        }
+    });
+}
