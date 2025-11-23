@@ -96,6 +96,14 @@ article a:hover {
     color: #0077cc;
 }
 
+article img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;       
+    display: block;
+    margin: 0 auto 1rem auto;  
+}
+
 /* Footer */
 footer {
     background-color: #6e6e6e;
