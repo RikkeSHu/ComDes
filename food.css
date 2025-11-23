@@ -92,6 +92,16 @@ nav a {
     color: #aaa;
 }
 
+.back-to-top {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-to-top:hover {
+    text-decoration: underline;
+}
+
 
 /* Gjør hele kortet klikkbart */
 section a {

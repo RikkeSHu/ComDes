@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="party.css">
 </head>
 
-<body>
+<body id="top">
     <header>
         <h1><a href="Index.html">The Culture Corner</a></h1>
         <nav>
@@ -160,31 +160,12 @@
 
         <div class="footer-bottom">
             <p>© 2025 The Culture Corner. All rights reserved.</p>
+            <p><a href="#top" class="back-to-top">Back to Top ↑</a></p>
         </div>
     </footer>
 
-    <script>
-        const video = document.getElementById("partyVideo");
-
-        video.addEventListener("loadedmetadata", () => {
-            video.volume = 0.2; // 20% volume
-        });
-    </script>
-
-    <script>
-        const articleItems = document.querySelectorAll('.article-text');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // animate only once
-                }
-            });
-        }, { threshold: 0.1 });
-
-        articleItems.forEach(el => observer.observe(el));
-    </script>
+    <script src="party.js"></script>
+       
 
 
 </body>

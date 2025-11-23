@@ -181,3 +181,13 @@ section a:hover article {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     cursor: pointer;
 }
+
+.back-to-top {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-to-top:hover {
+    text-decoration: underline;
+}
