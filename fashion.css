@@ -91,6 +91,8 @@ th, td {
     text-align: left;
 }
 
+/*Research kilder*/
+
 .modal {
     position: fixed;
     top: 0;
@@ -98,19 +100,39 @@ th, td {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.3);
-    opacity: 0;
     z-index: -1;
     pointer-events: none;
     display: flex;
-    align-items: center;  
-    justify-content: center; 
-    transition: opacity 0.3s ease-in-out;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal.open {
-    opacity: 1;
     z-index: 1000;
     pointer-events: auto;
+}
+
+.modal-inner {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transform: scale(0.7);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.modal.open .modal-inner {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal.closing .modal-inner {
+    transition: none;
+    opacity: 0;
+    transform: scale(0.7);
 }
 
 .modal-inner {
