@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initScrollFade();
 });
 
-/* ------------------ 1) PIE CHART: SCROLL-STYRT ANIMASJON ------------------ */
+/* ------------------ 1) PIE CHART: SCROLL-DRIVEN ANIMATION ------------------ */
 
 function initMultiSliceCharts() {
     const multiCharts = document.querySelectorAll(".multi-pie-chart");
@@ -14,40 +14,24 @@ function initMultiSliceCharts() {
     multiCharts.forEach(buildMultiSlicePie);
 
     function updateChartsOnScroll() {
-        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-        const mid = viewportHeight / 2; 
-        multiCharts.forEach(chart => {
-            const rect = chart.getBoundingClientRect();
-            const center = rect.top + rect.height / 2; 
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 
-            let progress = 0;
+    multiCharts.forEach(chart => {
+        const rect = chart.getBoundingClientRect();
+        const chartHeight = rect.height;
 
+        const start = viewportHeight * 0.3; // start fill 
+        const end = start + chartHeight * 1.5; // end fill 
 
-            if (center >= mid && center <= viewportHeight) {
-                const range = viewportHeight - mid;
-                const distFromMid = center - mid;
-                progress = 1 - distFromMid / range;
-            }
+        let progress = (viewportHeight - rect.top - start) / (end - start);
+        progress = Math.max(0, Math.min(1, progress));
 
-            else if (center >= 0 && center < mid) {
-                const range = mid;    
-                const distFromTop = center;  
-                progress = distFromTop / range;
-            } else {
-
-                progress = 0;
-            }
-
-
-            progress = Math.max(0, Math.min(1, progress));
-
-            setPieProgress(chart, progress);
-        });
-    }
+        setPieProgress(chart, progress);
+    });
+}
 
     window.addEventListener("scroll", updateChartsOnScroll);
     window.addEventListener("resize", updateChartsOnScroll);
-
 
     updateChartsOnScroll();
 }
@@ -56,16 +40,12 @@ function buildMultiSlicePie(container) {
     const valuesAttr = container.dataset.values;
     if (!valuesAttr) return;
 
-    const values = valuesAttr
-        .split(",")
-        .map(v => parseFloat(v.trim()))
-        .filter(v => !isNaN(v));
+    const values = valuesAttr.split(",").map(v => parseFloat(v.trim())).filter(v => !isNaN(v));
 
     const size = 220;
     const radius = size / 2 - 15;
     const circumference = 2 * Math.PI * radius;
     const center = size / 2;
-
     const svgNS = "http://www.w3.org/2000/svg";
     const svg = document.createElementNS(svgNS, "svg");
     svg.setAttribute("viewBox", `0 0 ${size} ${size}`);
@@ -82,25 +62,20 @@ function buildMultiSlicePie(container) {
         circle.classList.add(`slice-${index + 1}`);
         circle.style.fill = "none";
         circle.style.strokeWidth = 20;
-
-        // tom sirkel ved start
-        circle.style.strokeDasharray = String(circumference);
-        circle.style.strokeDashoffset = String(circumference);
-
-
-        const rotation = (accumulatedPercent / 100) * 360;
+        circle.style.strokeDasharray = circumference;
+        circle.style.strokeDashoffset = circumference;
         circle.style.transformOrigin = `${center}px ${center}px`;
-        circle.style.transform = `rotate(${rotation - 90}deg)`;
+        circle.style.transform = `rotate(${(accumulatedPercent / 100) * 360 - 90}deg)`;
+        circle.style.strokeLinecap = "butt";
 
-        circle.dataset.percent = String(percent);
-        circle.dataset.circumference = String(circumference);
+        circle.dataset.percent = percent;
+        circle.dataset.circumference = circumference;
 
         svg.appendChild(circle);
         slices.push(circle);
 
         accumulatedPercent += percent;
     });
-
 
     const totalLabel = document.createElement("div");
     totalLabel.classList.add("multi-pie-percentage");
@@ -110,27 +85,24 @@ function buildMultiSlicePie(container) {
     container.appendChild(svg);
     container.appendChild(totalLabel);
 
-    container.dataset.progress = "0";
     container._slices = slices;
 }
 
 function setPieProgress(container, progress) {
-    container.dataset.progress = progress.toFixed(3);
     const slices = container._slices || container.querySelectorAll("circle");
 
     slices.forEach(circle => {
         const percent = parseFloat(circle.dataset.percent || "0");
         const circumference = parseFloat(circle.dataset.circumference || "0");
 
-        // Hvor mye av denne biten som skal tegnes basert på global progress
         const filledRatio = (percent / 100) * progress;
         const offset = circumference * (1 - filledRatio);
 
-        circle.style.strokeDashoffset = String(offset);
+        circle.style.strokeDashoffset = offset;
     });
 }
 
-/* ------------------ 1b) HORISONTALT BAR CHART ------------------ */
+/* ------------------ 1b) HORIZONTAL BAR CHART ------------------ */
 
 function initBarCharts() {
     const barCharts = document.querySelectorAll(".bar-chart");
@@ -140,27 +112,21 @@ function initBarCharts() {
 
     function updateBarsOnScroll() {
         const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-        const mid = viewportHeight / 2;
 
         barCharts.forEach(chart => {
             const rect = chart.getBoundingClientRect();
-            const center = rect.top + rect.height / 2;
+            const chartHeight = rect.height;
 
-            let progress = 0;
+            // Offset so bars start filling later
+            const threshold = chartHeight * 0.2;
 
-            if (center >= mid && center <= viewportHeight) {
-                const range = viewportHeight - mid;
-                const distFromMid = center - mid;
-                progress = 1 - distFromMid / range;
-            } else if (center >= 0 && center < mid) {
-                const range = mid;
-                const distFromTop = center;
-                progress = distFromTop / range;
-            } else {
-                progress = 0;
-            }
+            const visibleTop = Math.max(rect.top, 0);
+            const visibleBottom = Math.min(rect.bottom, viewportHeight);
+            const visibleHeight = Math.max(0, visibleBottom - visibleTop - threshold);
 
+            let progress = visibleHeight / (chartHeight - threshold);
             progress = Math.max(0, Math.min(1, progress));
+
             setBarProgress(chart, progress);
         });
     }
@@ -174,15 +140,8 @@ function buildBarChart(container) {
     const valuesAttr = container.dataset.values || "";
     const labelsAttr = container.dataset.labels || "";
 
-    const values = valuesAttr
-        .split(",")
-        .map(v => parseFloat(v.trim()))
-        .filter(v => !isNaN(v));
-
-    const labels = labelsAttr
-        .split(",")
-        .map(l => l.trim());
-
+    const values = valuesAttr.split(",").map(v => parseFloat(v.trim())).filter(v => !isNaN(v));
+    const labels = labelsAttr.split(",").map(l => l.trim());
     if (!values.length) return;
 
     const maxValue = Math.max(...values, 1);
@@ -203,8 +162,8 @@ function buildBarChart(container) {
 
         const fill = document.createElement("div");
         fill.className = `bar-fill bar-fill-${index + 1}`;
-        fill.dataset.value = String(value);
-        fill.dataset.maxValue = String(maxValue);
+        fill.dataset.value = value;
+        fill.dataset.maxValue = maxValue;
         fill.style.width = "0%";
 
         const percentSpan = document.createElement("span");
@@ -234,8 +193,7 @@ function setBarProgress(container, progress) {
     });
 }
 
-
-/* ------------------ 2) Skjærefjøl scroll-animasjon ------------------ */
+/* ------------------ 2) BOARD BLOCK SCROLL ANIMATION ------------------ */
 
 function initBoardBlocks() {
     const boards = document.querySelectorAll(".board-block");
@@ -261,7 +219,7 @@ function initBoardBlocks() {
     boards.forEach(block => observer.observe(block));
 }
 
-/* ------------------ 3) scroll-fade for .scroll-fade-elementer ------------------ */
+/* ------------------ 3) SCROLL-FADE ELEMENTS ------------------ */
 
 function initScrollFade() {
     const fadeEls = document.querySelectorAll(".scroll-fade");
