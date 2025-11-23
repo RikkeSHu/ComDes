@@ -1,19 +1,22 @@
- const video = document.getElementById("partyVideo");
+const video = document.getElementById("partyVideo");
 
-        video.addEventListener("loadedmetadata", () => {
-            video.volume = 0.2; // 20% volume
+if (video) {
+    video.addEventListener("loadedmetadata", () => {
+        video.volume = 0.2; 
+    });
+}
+
+const articleItems = document.querySelectorAll('.article-text');
+
+if (articleItems.length > 0) {
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible'); 
+                observer.unobserve(entry.target);     
+            }
         });
+    }, { threshold: 0.1 });
 
-
-     const articleItems = document.querySelectorAll('.article-text');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // animate only once
-                }
-            });
-        }, { threshold: 0.1 });
-
-        articleItems.forEach(el => observer.observe(el));
+    articleItems.forEach(el => observer.observe(el));
+}
