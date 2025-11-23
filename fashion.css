@@ -122,6 +122,55 @@ th, td {
     box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
 }
 
+.modal-btn {
+    background-color: #6f88b9;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.modal-btn:hover {
+    background-color: #5a72a0;
+    transform: translateY(-2px);
+}
+
+.close-btn {
+    background-color: #6f88b9;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.close-btn:hover {
+    background-color: #5a72a0;
+    transform: translateY(-2px);
+}
+
+.research-links a {
+    color: #29559b;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    margin: 6px 0;
+}
+
+.research-links a:hover {
+    text-decoration: underline;
+    color: #1c3e73;
+}
+
 
 /* Footer */
 .site-footer {
