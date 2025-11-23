@@ -234,6 +234,19 @@ article p {
     margin-bottom: 1rem;
 }
 
+/* --- SLIDE-IN EFFECT FOR BOARD BLOCK --- */
+.slide-in {
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+.slide-in.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
 /* Responsiv */
 @media (max-width: 600px) {
     .chart-section {
