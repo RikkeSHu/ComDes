@@ -1,10 +1,12 @@
+/* ----------------- Global Styles ----------------- */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #234257;
     color: white;
 }
-/* Header */
+
+/* ----------------- Header ----------------- */
 header {
     background-color: #cbd3e3;
     color: rgb(55, 55, 52);
@@ -14,7 +16,7 @@ header {
     padding: 1em;
 }
 
-header h1 a{
+header h1 a {
     text-decoration: none;
     color: inherit;
 }
@@ -32,6 +34,7 @@ nav a {
     text-decoration: none;
 }
 
+/* ----------------- Footer ----------------- */
 .site-footer {
     background-color: #6e6e6e;
     color: #fff;
@@ -103,8 +106,68 @@ nav a {
     text-decoration: underline;
 }
 
+/* ----------------- Layout ----------------- */
+.layout {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    align-items: stretch; /* Make all columns same height */
+}
 
-/* Gjør hele kortet klikkbart */
+/* Columns */
+.layout > .side-images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.layout > .articles {
+    flex: 2;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: black;
+    padding: 2em;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+/* ----------------- Media Boxes ----------------- */
+.media-box {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.media-box img,
+.media-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Double-height video */
+.video-box {
+    height: 520px;
+}
+
+/* ----------------- Article Text Animation ----------------- */
+.article-text {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.article-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ----------------- Clickable Sections ----------------- */
 section a {
     display: block;
     height: 100%;
@@ -118,72 +181,120 @@ section a:hover article {
     cursor: pointer;
 }
 
-
-/* 3-column layout */
-.layout {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr; /* left - center - right */
-    gap: 20px;
-    padding: 20px;
-}
-/* Uniform boxes for images & videos */
-.media-box {
-    width: 100%;
-    height: 250px;        /* choose the height you want */
-    overflow: hidden;
-    border-radius: 12px;
-    margin-bottom: 20px;
-}
-/* Make images fill the box cleanly */
-.media-box img,
-.media-box video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;     /* crop nicely — no stretching */
-    border-radius: 12px;
-}
-/* center text */
-
-.articles {
-    background-color: rgba(255, 255, 255, 0.928);   /* white background */
-    color: black;              /* text color inside box */
-    padding: 2em;              /* space inside the box */
-    border-radius: 12px;       /* rounded corners */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* subtle shadow */
-    max-width: 650px;          /* keep your existing width */
-    margin: auto;              /* center in the column */
-    text-align: left;          /* left-align text inside box */
-}
-
-.layout > .side-images {
+/* ----------------- Charts (Smaller Version) ----------------- */
+.chart-section {
+    margin: 2rem 0;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* keeps boxes aligned to top */
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-/* Double-height video */
-.video-box {
-    height: 520px; /* 2 × 250px + 20px gap = 520px */
+/* Chart wrapper */
+.pie-chart-wrapper {
+    flex: 0 0 120px; /* smaller wrapper */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.video-box video {
+/* Chart text */
+.chart-text {
+    flex: 1 1 200px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Multi-slice pie chart */
+.multi-pie-chart {
+    position: relative;
+    width: 120px;    /* smaller chart */
+    height: 120px;   /* smaller chart */
+}
+
+.multi-pie-chart svg {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* crop if needed */
-    border-radius: 12px;
-}
-.article-text {
-    opacity: 0;
-    transform: translateY(20px); /* start slightly down */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.article-text.visible {
-    opacity: 1;
-    transform: translateY(0); /* slide into place */
+.multi-pie-percentage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem; /* slightly smaller label */
+    font-weight: bold;
 }
 
+/* ----------------- Chart Colors ----------------- */
+.habits-chart .slice-1 { stroke: #2b8cff; }
+.habits-chart .slice-2 { stroke: #ffa726; }
+.habits-chart .slice-3 { stroke: #8e24aa; }
+.habits-chart .slice-4 { stroke: red; }
 
+/* Legend */
+.chart-legend {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+}
 
+.chart-legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+}
 
+.legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+}
 
+/* Habit legend colors */
+.chart-legend-habits .legend-habits-1 { background-color: #2b8cff; }
+.chart-legend-habits .legend-habits-2 { background-color: #ffa726; }
+.chart-legend-habits .legend-habits-3 { background-color: #8e24aa; }
+.chart-legend-habits .legend-habits-4 { background-color: red; }
+
+/* ----------------- Price Tags ----------------- */
+.price-tag {
+    text-align: center;
+    margin-top: 1px;
+    font-weight: bold;
+}
+
+/* ----------------- Responsiveness ----------------- */
+@media (max-width: 900px) {
+    .layout {
+        flex-direction: column;
+    }
+    .layout > .side-images {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 10px;
+    }
+    .media-box {
+        flex: 0 0 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 600px) {
+    .chart-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pie-chart-wrapper {
+        align-self: center;
+    }
+
+    .layout > .side-images {
+        flex-direction: column;
+    }
+}
