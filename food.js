@@ -175,7 +175,7 @@ function buildBarChart(container) {
         row.appendChild(track);
         row.appendChild(percentSpan);
 
-        container.appendChild(row);
+        container.appendChild(row); 
         bars.push(fill);
     });
 
