@@ -119,6 +119,19 @@ footer {
     flex: 1 1 55%;
 }
 
+/* --------------------------- */
+/* IMAGE SIZE FIX (NEW PART)   */
+/* --------------------------- */
+.image-container img {
+    width: 100%;
+    height: auto;
+    min-width: 300px;   /* prevents small images from shrinking too much */
+    max-width: 450px;   /* prevents big images from getting oversized */
+    object-fit: cover;
+    border-radius: 10px;
+}
+/* --------------------------- */
+
 /* Scroll animations */
 .scroll-section {
     opacity: 0;
@@ -153,9 +166,9 @@ footer {
     transform: translateX(0);
 }
 
+/* Remove old image limit */
 .scroll-image-left img {
     width: 100%;
-    max-width: 250px;
     display: block;
 }
 
@@ -173,5 +186,10 @@ footer {
 
     .text-container {
         margin-top: 1em;
+    }
+
+    .image-container img {
+        max-width: 100%;
+        min-width: 200px;
     }
 }
