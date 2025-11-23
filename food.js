@@ -1,41 +1,66 @@
 
-//  MULTI-SLICE PIE CHART ----------------
 
 document.addEventListener("DOMContentLoaded", () => {
+    initMultiSliceCharts();
+    initBoardBlocks();
+    initScrollFade();
+});
+
+/* ------------------ 1) PIE CHART: SCROLL-STYRT ANIMASJON ------------------ */
+
+function initMultiSliceCharts() {
     const multiCharts = document.querySelectorAll(".multi-pie-chart");
     if (!multiCharts.length) return;
 
-    // Fallback: animer alle hvis IntersectionObserver ikke finnes
-    if (!("IntersectionObserver" in window)) {
-        multiCharts.forEach(chart => animateMultiSlicePie(chart));
-        return;
+    multiCharts.forEach(buildMultiSlicePie);
+
+    function updateChartsOnScroll() {
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+        const mid = viewportHeight / 2; 
+        multiCharts.forEach(chart => {
+            const rect = chart.getBoundingClientRect();
+            const center = rect.top + rect.height / 2; 
+
+            let progress = 0;
+
+
+            if (center >= mid && center <= viewportHeight) {
+                const range = viewportHeight - mid;
+                const distFromMid = center - mid;
+                progress = 1 - distFromMid / range;
+            }
+
+            else if (center >= 0 && center < mid) {
+                const range = mid;    
+                const distFromTop = center;  
+                progress = distFromTop / range;
+            } else {
+
+                progress = 0;
+            }
+
+
+            progress = Math.max(0, Math.min(1, progress));
+
+            setPieProgress(chart, progress);
+        });
     }
 
-    const observer = new IntersectionObserver(
-        entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const el = entry.target;
+    window.addEventListener("scroll", updateChartsOnScroll);
+    window.addEventListener("resize", updateChartsOnScroll);
 
-                    if (!el.dataset.animated) {
-                        animateMultiSlicePie(el);
-                        el.dataset.animated = "true";
-                    }
 
-                    observer.unobserve(el);
-                }
-            });
-        },
-        { threshold: 0.4 }
-    );
+    updateChartsOnScroll();
+}
 
-    multiCharts.forEach(chart => observer.observe(chart));
-});
+function buildMultiSlicePie(container) {
+    const valuesAttr = container.dataset.values;
+    if (!valuesAttr) return;
 
-function animateMultiSlicePie(container) {
-    const values = container.dataset.values
+    const values = valuesAttr
         .split(",")
-        .map(v => parseFloat(v.trim()));
+        .map(v => parseFloat(v.trim()))
+        .filter(v => !isNaN(v));
 
     const size = 220;
     const radius = size / 2 - 15;
@@ -43,11 +68,11 @@ function animateMultiSlicePie(container) {
     const center = size / 2;
 
     const svgNS = "http://www.w3.org/2000/svg";
-
     const svg = document.createElementNS(svgNS, "svg");
     svg.setAttribute("viewBox", `0 0 ${size} ${size}`);
 
     let accumulatedPercent = 0;
+    const slices = [];
 
     values.forEach((percent, index) => {
         const circle = document.createElementNS(svgNS, "circle");
@@ -56,42 +81,28 @@ function animateMultiSlicePie(container) {
         circle.setAttribute("r", radius);
 
         circle.classList.add(`slice-${index + 1}`);
-
         circle.style.fill = "none";
         circle.style.strokeWidth = 20;
 
-        circle.style.strokeDasharray = circumference;
-        circle.style.strokeDashoffset = circumference;
+        // tom sirkel ved start
+        circle.style.strokeDasharray = String(circumference);
+        circle.style.strokeDashoffset = String(circumference);
 
-        // Startvinkel for denne biten
+
         const rotation = (accumulatedPercent / 100) * 360;
         circle.style.transformOrigin = `${center}px ${center}px`;
         circle.style.transform = `rotate(${rotation - 90}deg)`;
 
+        circle.dataset.percent = String(percent);
+        circle.dataset.circumference = String(circumference);
+
         svg.appendChild(circle);
-
-        // Animasjon for denne biten
-        const duration = 1500;
-        let start = null;
-
-        function step(timestamp) {
-            if (!start) start = timestamp;
-            const progress = Math.min((timestamp - start) / duration, 1);
-
-            const offset = circumference - (percent / 100) * circumference * progress;
-            circle.style.strokeDashoffset = offset;
-
-            if (progress < 1) {
-                requestAnimationFrame(step);
-            }
-        }
-
-        requestAnimationFrame(step);
+        slices.push(circle);
 
         accumulatedPercent += percent;
     });
 
-    // Midt-tekst
+
     const totalLabel = document.createElement("div");
     totalLabel.classList.add("multi-pie-percentage");
     totalLabel.textContent = "100%";
@@ -99,11 +110,30 @@ function animateMultiSlicePie(container) {
     container.innerHTML = "";
     container.appendChild(svg);
     container.appendChild(totalLabel);
+
+    container.dataset.progress = "0";
+    container._slices = slices;
 }
 
-// Skjærefjøl scroll-animasjon ----------
+function setPieProgress(container, progress) {
+    container.dataset.progress = progress.toFixed(3);
+    const slices = container._slices || container.querySelectorAll("circle");
 
-document.addEventListener("DOMContentLoaded", () => {
+    slices.forEach(circle => {
+        const percent = parseFloat(circle.dataset.percent || "0");
+        const circumference = parseFloat(circle.dataset.circumference || "0");
+
+        // Hvor mye av denne biten som skal tegnes basert på global progress
+        const filledRatio = (percent / 100) * progress;
+        const offset = circumference * (1 - filledRatio);
+
+        circle.style.strokeDashoffset = String(offset);
+    });
+}
+
+/* ------------------ 2) Skjærefjøl scroll-animasjon ------------------ */
+
+function initBoardBlocks() {
     const boards = document.querySelectorAll(".board-block");
     if (!boards.length) return;
 
@@ -125,15 +155,14 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     boards.forEach(block => observer.observe(block));
-});
+}
 
-// scroll-fade for .scroll-fade-elementer ----------
+/* ------------------ 3) scroll-fade for .scroll-fade-elementer ------------------ */
 
-document.addEventListener("DOMContentLoaded", () => {
+function initScrollFade() {
     const fadeEls = document.querySelectorAll(".scroll-fade");
     if (!fadeEls.length) return;
 
-    // Fallback hvis IntersectionObserver ikke finnes
     if (!("IntersectionObserver" in window)) {
         fadeEls.forEach(el => el.classList.add("visible"));
         return;
@@ -152,4 +181,4 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     fadeEls.forEach(el => fadeObserver.observe(el));
-});
+}
