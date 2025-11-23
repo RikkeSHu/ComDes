@@ -143,6 +143,14 @@ article p {
     object-fit: cover;
 }
 
+article img {
+    max-width: 60%;   
+    height: auto;    
+    display: block;
+    margin: 2rem auto; 
+    border-radius: 12px; 
+}
+
 /* ---------- CSS for kakediagrammene ---------- */
 
 /* Enkelt kakediagram + tekst ved siden av */
