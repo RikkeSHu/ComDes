@@ -13,7 +13,7 @@ header {
     padding: 1em;
 }
 
-header h1 a{
+header h1 a {
     text-decoration: none;
     color: inherit;
 }
@@ -66,24 +66,25 @@ article p {
 
 /* ---------- CSS for kakediagrammene ---------- */
 
+/* Enkelt kakediagram + tekst ved siden av */
 .chart-section {
     margin: 4rem 0;
     display: flex;
-    flex-wrap: wrap;
     gap: 2rem;
     align-items: center;
 }
 
+/* wrapper rundt diagrammet */
 .pie-chart-wrapper {
-    flex: 0 0 260px;
+    flex: 0 0 200px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Teksten ved siden av grafen */
+/* Tekst ved siden av diagrammet */
 .chart-text {
-    flex: 1 1 250px;
+    flex: 1 1 200px;
     font-size: 0.95rem;
     line-height: 1.6;
 }
@@ -91,15 +92,14 @@ article p {
 /* Multi-slice pie chart */
 .multi-pie-chart {
     position: relative;
-    width: 220px;
-    height: 220px;
+    width: 180px;
+    height: 180px;
 }
 
 .multi-pie-chart svg {
     width: 100%;
     height: 100%;
 }
-
 
 .multi-pie-percentage {
     position: absolute;
@@ -111,39 +111,39 @@ article p {
     font-weight: bold;
 }
 
-/* Farger på grafene ----------- */
+/* -------- Farger på grafene -------- */
 
 /* 1) Do you look at the price when you buy food? */
 .price-chart .slice-1 {
-    stroke: #4c12a8;  /* 83.3% */
+    stroke: #4c12a8;
 }
 .price-chart .slice-2 {
-    stroke: #675e35;  /* 16.7% */
+    stroke: #675e35;
 }
 
 /* 2) Do you share meals with your friends/roommates to save money? */
 .share-chart .slice-1 {
-    stroke: #316133;  /* 50% */
+    stroke: #316133;
 }
 .share-chart .slice-2 {
-    stroke: #c03c90;  /* 25% */
+    stroke: #c03c90;
 }
 .share-chart .slice-3 {
-    stroke: #0c1829;  /* 25% */
+    stroke: #0c1829;
 }
 
 /* 3) How do you usually get your meals? */
 .habits-chart .slice-1 {
-    stroke: #2b8cff;  /* 83.3% */
+    stroke: #2b8cff;
 }
 .habits-chart .slice-2 {
-    stroke: #ffa726;  /* 8.3% */
+    stroke: #ffa726;
 }
 .habits-chart .slice-3 {
-    stroke: #8e24aa;  /* 8.3% */
+    stroke: #8e24aa;
 }
 
-/* --- LEGEND (fargede "baller" + tekst) --- */
+/* -------- Legend (fargede prikker + tekst) -------- */
 
 .chart-legend {
     list-style: none;
@@ -166,42 +166,58 @@ article p {
     display: inline-block;
 }
 
-/* 1) Price chart */
+/* Price legend */
+.chart-legend-price .legend-price-1 { background-color: #4c12a8; }
+.chart-legend-price .legend-price-2 { background-color: #675e35; }
 
-/* Price chart legend */
-.chart-legend-price .legend-price-1 {
-    background-color: #4c12a8;
-}
-.chart-legend-price .legend-price-2 {
-    background-color: #675e35;
+/* Share legend */
+.chart-legend-share .legend-share-1 { background-color: #316133; }
+.chart-legend-share .legend-share-2 { background-color: #c03c90; }
+.chart-legend-share .legend-share-3 { background-color: #0c1829; }
+
+/* Habits legend */
+.chart-legend-habits .legend-habits-1 { background-color: #2b8cff; }
+.chart-legend-habits .legend-habits-2 { background-color: #ffa726; }
+.chart-legend-habits .legend-habits-3 { background-color: #8e24aa; }
+
+/* ---------- Side-ved-side for de to siste diagrammene ---------- */
+
+.chart-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin: 4rem 0;
+    align-items: flex-start;
 }
 
-/* Share chart legend */
-.chart-legend-share .legend-share-1 {
-    background-color: #316133;
-}
-.chart-legend-share .legend-share-2 {
-    background-color: #c03c90;
-}
-.chart-legend-share .legend-share-3 {
-    background-color: #0c1829;
+.chart-row .chart-section {
+    margin: 0;
+    flex: 1 1 320px;
 }
 
-/* Habits chart legend */
-.chart-legend-habits .legend-habits-1 {
-    background-color: #2b8cff;
+/* ---- Responsiv tilpasning ---- */
+
+@media (max-width: 900px) {
+    .chart-row {
+        flex-direction: column;
+    }
 }
-.chart-legend-habits .legend-habits-2 {
-    background-color: #ffa726;
-}
-.chart-legend-habits .legend-habits-3 {
-    background-color: #8e24aa;
+
+@media (max-width: 600px) {
+    .chart-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pie-chart-wrapper {
+        align-self: center;
+    }
 }
 
 /* ---------- Skjærefjøl-bakgrunn ---------- */
 
 .board-block {
-    background-image: url("../ComDes/foodpics/cuttingboard.png"); /* <-- din fil */
+    background-image: url("../ComDes/foodpics/cuttingboard.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -257,17 +273,4 @@ article p {
 .scroll-fade.visible {
     opacity: 1;
     transform: translateY(0);
-}
-
-
-/* Responsiv */
-@media (max-width: 600px) {
-    .chart-section {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .pie-chart-wrapper {
-        align-self: center;
-    }
 }
