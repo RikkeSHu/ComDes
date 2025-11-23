@@ -178,14 +178,14 @@ html {
     }
 }
 
+/* --- MUSIKKAVSPILLER RADIN --- */
 
-/* musikkavspiller */
 .music-container {
     display: flex;
 }
 
 .music-player {
-    background: #F3D130;
+    background: #F3D130;          
     padding: 25px 35px;
     text-align: center;
 }
@@ -213,7 +213,7 @@ html {
     box-shadow: 0 10px 60px rgba(255, 26, 26, 0.22);
 }
 
-.music-player  h1 {
+.music-player h1 {
     font-size: 20px;
     font-weight: 400;
     color: #333;
@@ -247,13 +247,13 @@ html {
     box-shadow: 0 5px 5px rgba(255, 26, 26, 0.22); 
 }
 
-.controls{
+.controls {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.controls div{
+.controls div {
     width: 60px;
     height: 60px;
     margin: 20px;
@@ -273,7 +273,88 @@ html {
     color: #F9F6F0;
 }
 
-/* musikkavspiller */
+/* --- XHEVRIJE-TEMA --- */
+
+.music-player.xhevrije-theme {
+    background: #2C1B3F !important;
+}
+
+.music-player.xhevrije-theme {
+    background: #b3a4c5;
+}
+
+
+.xhevrije-theme h1,
+.xhevrije-theme p {
+    color: #F9EAFF;
+}
+
+.xhevrije-theme nav .cirkle {
+    background: #F9EAFF;
+    color: #6D32A8;
+    box-shadow: 0 5px 14px rgba(203, 144, 255, 0.4);
+}
+
+.xhevrije-theme .song-img {
+    border-color: #F9EAFF;
+    box-shadow: 0 10px 60px rgba(203, 144, 255, 0.35);
+}
+
+.music-player.xhevrije-theme {
+    background: #b3a4c5;          
+}
+
+.music-player.xhevrije-theme h1,
+.music-player.xhevrije-theme p {
+    color: #F9EAFF;
+}
+
+.music-player.xhevrije-theme nav .cirkle {
+    background: #F9EAFF;
+    color: #6D32A8;
+    box-shadow: 0 5px 14px rgba(203, 144, 255, 0.4);
+}
+
+.music-player.xhevrije-theme .song-img {
+    border-color: #F9EAFF;
+    box-shadow: 0 10px 60px rgba(203, 144, 255, 0.35);
+}
+
+
+#progress2 {
+    appearance: none;
+    -webkit-appearance: none; 
+    width: 100%;
+    height: 6px;
+    background: #C590FF; 
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 40px 0;
+}
+
+#progress2::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none; 
+    background: #F48FB1; 
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 9px solid #F9EAFF;
+    box-shadow: 0 5px 5px rgba(244, 143, 177, 0.45); 
+}
+
+/* Knapper */
+.music-player.xhevrije-theme .controls div {
+    background: #F9EAFF;
+    color: #6D32A8;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.45);
+}
+
+.music-player.xhevrije-theme .controls div:nth-child(2) {
+    background: #F48FB1;
+    color: #2C1B3F;
+}
+
 
 /* Radin portrett bilde */
 .portrett-img {
