@@ -37,7 +37,7 @@ nav a {
 main {
     max-width: 1000px;
     margin: 2em auto;
-    background-color: #ffffff;
+    background-color: rgba(255, 250, 250, 0.923);
     border: 2px solid #6e6e6e;
     border-radius: 10px;
     padding: 2em;
@@ -89,13 +89,6 @@ tbody tr:hover {
 
 th, td {
     text-align: left;
-}
-
-.articles {
-    background-color: white; /* white box */
-    padding: 2em;            /* spacing inside the box */
-    border-radius: 10px;     /* rounded corners */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* optional subtle shadow */
 }
 
 /* Footer */
