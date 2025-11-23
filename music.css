@@ -32,6 +32,7 @@ nav a {
     text-decoration: none;
 }
 
+/* Footer */
 .site-footer {
     background-color: #6e6e6e;
     color: #fff;
@@ -44,6 +45,7 @@ nav a {
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px;
+    align-items: flex-start;
 }
 
 .footer-section {
@@ -84,6 +86,34 @@ nav a {
 
 .footer-section button:hover {
     background-color: #657aa6;
+}
+
+/* Legal section */
+.footer-section.legal {
+    flex: 0 1 auto;
+    min-width: 280px;
+    white-space: nowrap;
+}
+
+.footer-section.legal p {
+    text-align: center;
+}
+
+/* MAP - positioned under legal on the right */
+.footer-section.map {
+    flex: 0 0 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-top: 5px;
+}
+
+.footer-section.map iframe {
+    width: 300px;
+    height: 150px;
+    border: 0;
+    border-radius: 8px;
 }
 
 .footer-bottom {
