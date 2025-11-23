@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #d8f3d8; /* light green background */
+    background-color: #d8f3d8;
 }
 
 /* Header */
@@ -91,8 +91,7 @@ th, td {
     text-align: left;
 }
 
-/*Research kilder*/
-
+/* Research kilder Modal */
 .modal {
     position: fixed;
     top: 0;
@@ -119,7 +118,7 @@ th, td {
     max-width: 600px;
     width: 90%;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transform: scale(0.7);
+    transform: scale(0.9);       
     opacity: 0;
     transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
@@ -133,21 +132,6 @@ th, td {
     transition: none;
     opacity: 0;
     transform: scale(0.7);
-}
-
-.modal-inner {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    max-width: 600px;
-    width: 90%;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transform: scale(0.9);       
-    transition: transform 0.3s ease;
-}
-
-.modal.open .modal-inner {
-    transform: scale(1);         
 }
 
 .modal-btn {
@@ -199,7 +183,6 @@ th, td {
     color: #1c3e73;
 }
 
-
 /* Footer */
 .site-footer {
     background-color: #6e6e6e;
@@ -213,6 +196,7 @@ th, td {
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px;
+    align-items: flex-start;
 }
 
 .footer-section {
@@ -255,6 +239,34 @@ th, td {
     background-color: #657aa6;
 }
 
+/* Legal section */
+.footer-section.legal {
+    flex: 0 1 auto;
+    min-width: 280px;
+    white-space: nowrap;
+}
+
+.footer-section.legal p {
+    text-align: center;
+}
+
+/* MAP - positioned under legal on the right */
+.footer-section.map {
+    flex: 0 0 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-top: 5px;
+}
+
+.footer-section.map iframe {
+    width: 300px;
+    height: 150px;
+    border: 0;
+    border-radius: 8px;
+}
+
 .footer-bottom {
     text-align: center;
     margin-top: 30px;
@@ -272,8 +284,7 @@ th, td {
     text-decoration: underline;
 }
 
-
-/* Gjør hele kortet klikkbart */
+/* Clickable cards */
 section a {
     display: block;
     height: 100%;
@@ -307,18 +318,15 @@ section a:hover article {
     flex: 1 1 55%;
 }
 
-/* --------------------------- */
-/* IMAGE SIZE FIX (NEW PART)   */
-/* --------------------------- */
+/* Image size control */
 .image-container img {
     width: 100%;
     height: auto;
-    min-width: 300px;   /* prevents small images from shrinking too much */
-    max-width: 450px;   /* prevents big images from getting oversized */
+    min-width: 300px;
+    max-width: 450px;
     object-fit: cover;
     border-radius: 10px;
 }
-/* --------------------------- */
 
 /* Scroll animations */
 .scroll-section {
@@ -354,7 +362,6 @@ section a:hover article {
     transform: translateX(0);
 }
 
-/* Remove old image limit */
 .scroll-image-left img {
     width: 100%;
     display: block;
@@ -379,5 +386,15 @@ section a:hover article {
     .image-container img {
         max-width: 100%;
         min-width: 200px;
+    }
+    
+    .footer-section.legal {
+        text-align: center;
+        white-space: normal;
+    }
+    
+    .footer-section.map {
+        justify-content: center;
+        margin-top: 20px;
     }
 }
