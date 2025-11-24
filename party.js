@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     initMultiSliceCharts();
+    initMediaBoxesScrollAnimation();
 });
+
 
 // Video volume setup
 const video = document.getElementById("partyVideo");
@@ -134,4 +136,32 @@ function setPieProgress(container, progress) {
 
         circle.style.strokeDashoffset = offset;
     });
+}
+
+// ------ POP + FADE-IN/OUT FOR .media-box -------------
+function initMediaBoxesScrollAnimation() {
+    const boxes = document.querySelectorAll(".media-box");
+    if (!boxes.length) return;
+
+    boxes.forEach(box => box.classList.add("media-animate"));
+
+    if (!("IntersectionObserver" in window)) {
+        boxes.forEach(box => box.classList.add("in-view"));
+        return;
+    }
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("in-view");
+                } else {
+                    entry.target.classList.remove("in-view");
+                }
+            });
+        },
+        { threshold: 0.25 }
+    );
+
+    boxes.forEach(box => observer.observe(box));
 }
