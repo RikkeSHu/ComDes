@@ -208,16 +208,22 @@ function initBoardBlocks() {
         entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+
                     entry.target.classList.add("visible");
-                    observer.unobserve(entry.target);
+                } else {
+
+                    entry.target.classList.remove("visible");
                 }
             });
         },
-        { threshold: 0.25 }
+        {
+            threshold: 0.25,
+        }
     );
 
     boards.forEach(block => observer.observe(block));
 }
+
 
 /* ------------------ 3) SCROLL-FADE ELEMENTS ------------------ */
 
@@ -234,8 +240,11 @@ function initScrollFade() {
         entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // inne i viewport 
                     entry.target.classList.add("visible");
-                    fadeObserver.unobserve(entry.target);
+                } else {
+                    // scrollet forbi
+                    entry.target.classList.remove("visible");
                 }
             });
         },
