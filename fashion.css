@@ -33,6 +33,11 @@ nav a {
     text-decoration: none;
 }
 
+header h1 img {
+    width: 100px; /* endre til ønsket størrelse */
+    height: auto; /* beholder proporsjoner */
+}
+
 /* Main content container */
 main {
     max-width: 1000px;

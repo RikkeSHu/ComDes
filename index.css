@@ -39,6 +39,11 @@ nav a:hover {
     text-decoration: underline;
 }
 
+header h1 img {
+    width: 100px; /* endre til ønsket størrelse */
+    height: auto; /* beholder proporsjoner */
+}
+
 /* -------------------- MAIN -------------------- */
 main {
     padding: 2em;

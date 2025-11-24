@@ -34,6 +34,11 @@ nav a {
     text-decoration: none;
 }
 
+header h1 img {
+    width: 100px; /* endre til ønsket størrelse */
+    height: auto; /* beholder proporsjoner */
+}
+
 /* ----------------- Footer ----------------- */
 .site-footer {
     background-color: #6e6e6e;
