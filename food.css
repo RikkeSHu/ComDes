@@ -186,6 +186,31 @@ article img {
     border-radius: 12px; 
 }
 
+.food-wrapper {
+    display: flex;
+    gap: 8.2rem;
+    justify-content: center;
+}
+
+.food-item {
+    text-align: center; /* Sentrerer tekst under bildet */
+}
+
+.food-photo {
+    width: 200px;
+    max-width: 1000px; /* maks størrelse */
+    height: auto;
+    justify-content: center;
+}
+
+
+figcaption {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #3d3c3c;
+}
+
+
 /* ---------- CSS for kakediagrammene ---------- */
 
 /* Enkelt kakediagram + tekst ved siden av */
