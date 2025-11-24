@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initBarCharts();
     initBoardBlocks();
     initScrollFade();
+    initPhotoStacks();
 });
 
 /* ------------------ 1) PIE CHART: SCROLL-DRIVEN ANIMATION ------------------ */
@@ -20,8 +21,8 @@ function initMultiSliceCharts() {
         const rect = chart.getBoundingClientRect();
         const chartHeight = rect.height;
 
-        const start = viewportHeight * 0.3; // start fill 
-        const end = start + chartHeight * 1.5; // end fill 
+        const start = viewportHeight * 0.3;
+        const end = start + chartHeight * 1.5; 
 
         let progress = (viewportHeight - rect.top - start) / (end - start);
         progress = Math.max(0, Math.min(1, progress));
@@ -256,4 +257,71 @@ function initScrollFade() {
     );
 
     fadeEls.forEach(el => fadeObserver.observe(el));
+}
+
+/* ------------------ 4) PHOTO STACK CAROUSEL ------------------ */
+
+function initPhotoStacks() {
+    const stacks = document.querySelectorAll(".photo-stack");
+    if (!stacks.length) return;
+
+    stacks.forEach(stack => {
+        const photos = Array.from(stack.querySelectorAll(".stack-photo"));
+        if (!photos.length) return;
+
+        let currentIndex = 0;
+        const prevBtn = stack.querySelector(".stack-btn-prev");
+        const nextBtn = stack.querySelector(".stack-btn-next");
+
+        const section = stack.closest(".student-food-section") || stack.parentElement;
+        const captionEl = section.querySelector(".stack-caption");
+
+        function updateStack() {
+            const total = photos.length;
+
+            photos.forEach((img, idx) => {
+                img.classList.remove("is-active", "is-behind-1", "is-behind-2");
+
+                let diff = (idx - currentIndex + total) % total;
+
+                if (diff === 0) {
+                    img.classList.add("is-active");
+                } else if (diff === 1) {
+                    img.classList.add("is-behind-1");
+                } else if (diff === 2) {
+                    img.classList.add("is-behind-2");
+                } else {
+                    // langt bak, bare usynlig
+                }
+            });
+
+            if (captionEl) {
+                const active = photos[currentIndex];
+                captionEl.textContent = active.dataset.caption || active.alt || "";
+            }
+        }
+
+        function showNext() {
+            currentIndex = (currentIndex + 1) % photos.length;
+            updateStack();
+        }
+
+        function showPrev() {
+            currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+            updateStack();
+        }
+
+        if (nextBtn) nextBtn.addEventListener("click", showNext);
+        if (prevBtn) prevBtn.addEventListener("click", showPrev);
+
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowRight") {
+                showNext();
+            } else if (e.key === "ArrowLeft") {
+                showPrev();
+            }
+        });
+
+        updateStack();
+    });
 }
