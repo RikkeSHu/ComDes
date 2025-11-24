@@ -194,7 +194,6 @@ function setBarProgress(container, progress) {
 }
 
 /* ------------------ 2) BOARD BLOCK SCROLL ANIMATION ------------------ */
-
 function initBoardBlocks() {
     const boards = document.querySelectorAll(".board-block");
     if (!boards.length) return;
@@ -207,22 +206,27 @@ function initBoardBlocks() {
     const observer = new IntersectionObserver(
         entries => {
             entries.forEach(entry => {
+
                 if (entry.isIntersecting) {
+                    boards.forEach(b => {
+                        if (b !== entry.target) {
+                            b.classList.remove("visible");
+                        }
+                    });
 
                     entry.target.classList.add("visible");
-                } else {
-
+                } 
+                else {
                     entry.target.classList.remove("visible");
                 }
             });
         },
-        {
-            threshold: 0.25,
-        }
+        { threshold: 0.5 } 
     );
 
     boards.forEach(block => observer.observe(block));
 }
+
 
 
 /* ------------------ 3) SCROLL-FADE ELEMENTS ------------------ */
