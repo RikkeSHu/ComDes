@@ -7,7 +7,7 @@ body {
     min-height: 100vh;
 }
 
-/* Header */
+/* -------------------- HEADER -------------------- */
 header {
     background-color: #cbd3e3;
     color: rgb(55, 55, 52);
@@ -17,7 +17,7 @@ header {
     padding: 1em;
 }
 
-header h1 a{
+header h1 a {
     text-decoration: none;
     color: rgb(55, 55, 52);
 }
@@ -39,46 +39,52 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* Main */
+/* -------------------- MAIN -------------------- */
 main {
     padding: 2em;
-    flex: 1; /* Pushes footer to bottom */
+    flex: 1;
 }
 
-/* Grid container */
-/*main section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2em;
-    align-items: stretch; 
-}*/
-main section {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 kort per rad */
-    gap: 2em;
-    align-items: stretch;
+article {
+    text-align: center;
 }
 
+/* INTRO SECTION (full width) */
+.intro-section {
+    width: 100%;
+    margin-bottom: 2em;
+}
 
-/* Article cards */
+.intro-section article {
+    background-color: rgb(255, 252, 233);
+    padding: 1.5em;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* -------------------- CARD GRID -------------------- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em;
+}
+
 article {
     background-color: rgb(255, 252, 233);
     padding: 1.5em;
-    border-radius: 4px; 
+    border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    min-height: 140px; 
+    min-height: 140px;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
 }
 
-/* shadow etc */
 article:hover {
     transform: translateY(-4px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Tekst og linker inni artikler */
 article h2 {
     margin: 0 0 0.5rem 0;
 }
@@ -99,76 +105,12 @@ article a:hover {
 article img {
     width: 80px;
     height: 80px;
-    object-fit: contain;       
+    object-fit: contain;
     display: block;
-    margin: 0 auto 1rem auto;  
+    margin: 0 auto 1rem auto;
 }
 
-/* Footer */
-
-.site-footer {
-    background-color: #6e6e6e;
-    color: #fff;
-    padding: 40px 20px;
-    font-family: Arial, sans-serif;
-}
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.footer-section {
-    flex: 1 1 200px;
-    min-width: 200px;
-}
-
-.footer-section h4 {
-    margin-bottom: 10px;
-    color: #fff;
-}
-
-.footer-section a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 10px;
-}
-
-.footer-section a:hover {
-    text-decoration: underline;
-}
-
-.footer-section input[type="email"] {
-    padding: 8px;
-    margin-right: 5px;
-    border-radius: 4px;
-    border: none;
-}
-
-.footer-section button {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: #6f88b9;
-    color: #222;
-    cursor: pointer;
-}
-
-.footer-section button:hover {
-    background-color: #657aa6;
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 0.9em;
-    color: #aaa;
-}
-
-
-/* Gjør hele kortet klikkbart */
+/* Make entire card clickable */
 section a {
     display: block;
     height: 100%;
@@ -182,7 +124,7 @@ section a:hover article {
     cursor: pointer;
 }
 
-/* Footer */
+/* -------------------- FOOTER -------------------- */
 .site-footer {
     background-color: #6e6e6e;
     color: #fff;
@@ -249,7 +191,7 @@ section a:hover article {
     text-align: center;
 }
 
-/* MAP - positioned under legal on the right */
+/* Map */
 .footer-section.map {
     flex: 0 0 100%;
     width: 100%;
