@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #8f1515;
+    background: radial-gradient(circle at top, #9c2222, #5a0e0e)
 }
 
 
@@ -495,9 +495,8 @@ html {
 
 /* --- SCROLLYTELLING / RADIN-STORY --- */
 
-.radin-story {
+#radin-story {
     padding: 4rem 10vw;
-    background: radial-gradient(circle at top, #9c2222, #5a0e0e);
 }
 
 .story-inner {
@@ -633,6 +632,7 @@ html {
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
+
 /* Sentrer musikkspilleren inni storyen */
 .story-block .music-container {
     justify-content: center;
@@ -703,7 +703,6 @@ html {
 
 .x-section {
     padding: 4rem 10vw 6rem;
-    background: radial-gradient(circle at top left, #8f1515 0%, #8f1515 45%, #3a0712 100%);
     position: relative;
     overflow: hidden;
 }
