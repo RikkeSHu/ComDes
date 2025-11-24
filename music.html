@@ -472,35 +472,6 @@
                         </blockquote>
                     </div>
 
-                    <!-- MUSIKKSPILLEREN RADIN  -->
-                    <div class="music-container">
-                        <div class="music-player">
-                            <nav>
-                                <div class="cirkle">
-                                    <i class="fa-solid fa-angle-left"></i>
-                                </div>
-                                <div class="cirkle">
-                                    <i class="fa-solid fa-bars"></i>
-                                </div>
-                            </nav>
-                            <img src="../ComDes/music_images/turbulentetanker.png" class="song-img" alt="Album cover">
-                            <h1>Nøtteskall</h1>
-                            <p>Radin</p>
-
-                            <audio id="song">
-                                <source src="music/notteskall(1).mp3" type="audio/mpeg">
-                            </audio>
-                            <input type="range" value="0" id="progress">
-
-                            <div class="controls">
-                                <div><i class="fa-solid fa-backward"></i></div>
-                                <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
-                                <div><i class="fa-solid fa-forward"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--SLUTT MUSIKKSPILLEREN  -->
-
                     <!-- VIDEO: Radin studioklipp, musikkprosess -->
                     <div class="process-video fade">
                         <video controls class="gallery-img">
@@ -533,13 +504,35 @@
             </div>
         </article>
 
-        <!-- NY ARTIKKEL (samme id beholdt etter ønske) -->
         <article id="radin-story">
             <!-- musikkavspiller del med hvordan medier påvirker  -->
             <div class="story-inner">
-                <!-- VENSTRE: STICKY PORTRETT -->
+                <!-- VENSTRE: STICKY MUSIKKSPILLER (i stedet for portrett-bilde) -->
                 <div class="portrett-wrapper fade">
-                    <img src="../ComDes/music_images/Radin_portrett.jpeg" class="portrett-img" alt="Radin portrett">
+                    <div class="music-player">
+                        <nav>
+                            <div class="cirkle">
+                                <i class="fa-solid fa-angle-left"></i>
+                            </div>
+                            <div class="cirkle">
+                                <i class="fa-solid fa-bars"></i>
+                            </div>
+                        </nav>
+                        <img src="../ComDes/music_images/turbulentetanker.png" class="song-img" alt="Album cover">
+                        <h1>Nøtteskall</h1>
+                        <p>Radin</p>
+
+                        <audio id="song">
+                            <source src="music/notteskall(1).mp3" type="audio/mpeg">
+                        </audio>
+                        <input type="range" value="0" id="progress">
+
+                        <div class="controls">
+                            <div><i class="fa-solid fa-backward"></i></div>
+                            <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
+                            <div><i class="fa-solid fa-forward"></i></div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- HØYRE: TEKST BLOKK 1–3 -->
@@ -576,7 +569,9 @@
                     </div>
                 </div>
             </div>
+        </article>
 
+        <article id="radin-story">
              <div class="story-inner story-inner-single">
             <div class="story-text">
                 <br><br>
