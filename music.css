@@ -665,6 +665,15 @@ html {
     margin: 20px 0 10px 0;
 }
 
+.story-block a {
+    color: inherit;        /* Tar samme farge som annen tekst */
+    font-weight: 600;      /* Valgfritt: gjør det litt tydelig at det er en link */
+}
+
+.story-block a:hover {
+    opacity: 0.7;          /* Fin diskret hover-effekt */
+}
+
 /* --- FADE-IN EFFEKT FOR SCROLLYTELLING --- */
 
 .fade {
