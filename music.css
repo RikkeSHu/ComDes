@@ -310,10 +310,13 @@ html {
 }
 
 .music-player {
-    background: #F3D130;          
-    padding: 25px 35px;
+    background: #F3D130;
+    padding: 18px 25px;
     text-align: center;
+    transform: scale(0.80);  
+    transform-origin: top center;
 }
+
 
 .music-player nav {
     display: flex;
