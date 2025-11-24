@@ -633,6 +633,32 @@ html {
 }
 
 
+
+/* Radin sitt studio-bilde */
+.studio-block {
+    margin: 2.5rem auto;
+    text-align: center;
+}
+
+/* Studio-bildet k */
+.studio-img {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 900px;
+    border-radius: 18px;
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.8);
+}
+
+/* Bildetekst */
+.studio-caption {
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
 /* Sentrer musikkspilleren inni storyen */
 .story-block .music-container {
     justify-content: center;
